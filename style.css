@@ -32,3 +32,7 @@
     border-width: 1px;
     background-color: white;
 }
+
+.change-bg {
+    background-color: blue;
+}
