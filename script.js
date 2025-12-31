@@ -1,4 +1,3 @@
-
 //make grid
 function grid(gridSize = 16) {
   const table = document.querySelector(".table");
@@ -12,13 +11,13 @@ function grid(gridSize = 16) {
 
     table.appendChild(cols);
   }
-changeBg();
+  changeBg();
 }
 
 function createColumn() {
-const columnDiv = document.createElement("div");
-columnDiv.classList.add("cols");
-return columnDiv;
+  const columnDiv = document.createElement("div");
+  columnDiv.classList.add("cols");
+  return columnDiv;
 }
 
 function createRow() {
@@ -27,29 +26,57 @@ function createRow() {
   return rowDiv;
 }
 
-
 function changeBg() {
   const rowsList = document.querySelectorAll(".box");
   const colorChoice = document.querySelector("#color-choice");
-  
+  const pen = document.querySelector(".pen");
+  const rainbowPen = document.querySelector(".rainbow-pen");
+  const eraser = document.querySelector(".eraser");
+  const clear = document.querySelector(".clear");
+
   for (let i = 0; i < rowsList.length; i++) {
     const rows = rowsList[i];
     rows.addEventListener("mouseenter", () => {
-      
       // rows.classList.add("change-bg");
       // rows.style.backgroundColor = colorChoice.value;
-      rows.style.backgroundColor = randomColor();
+      // rows.style.backgroundColor = randomColor();
+
+      if (pen.classList.contains("active")) {
+        rows.style.backgroundColor = colorChoice.value;
+      } else if (rainbowPen.classList.contains("active")) {
+        rows.style.backgroundColor = randomColor();
+      } else if (eraser.classList.contains("active")) {
+        rows.style.backgroundColor = "white";
+      }
     });
   }
-  
 }
 
-function randomColor() {
-  const r = Math.floor(Math.random() * 256);
-  const g = Math.floor(Math.random() * 256);
-  const b = Math.floor(Math.random() * 256);
-  return `rgb(${r}, ${g}, ${b})`;
+function toggleSwitch() {
+  const toggleButtons = document.querySelectorAll(".toggle");
+
+  // buttons.forEach(btn => {
+  //   btn.addEventListener("click", () => {
+
+  //     // remove active from all buttons
+  //     buttons.forEach(b => b.classList.remove("active"));
+
+  //     // add active to clicked button
+  //     btn.classList.add("active");
+  //   });
+  // });
+
+  for (let i = 0; i < toggleButtons.length; i++) {
+    toggleButtons[i].addEventListener("click", () => {
+      for (let j = 0; j < toggleButtons.length; j++) {
+        toggleButtons[j].classList.remove("active");
+      }
+
+      toggleButtons[i].classList.add("active");
+    });
+  }
 }
+
 
 
 function askNewGrid() {
@@ -68,7 +95,7 @@ function askNewGrid() {
     table.removeChild(cols);
   }
 
-/*   const cols = table.querySelectorAll(".cols");
+  /*   const cols = table.querySelectorAll(".cols");
   cols.forEach((cols) => {
     cols.remove();
   });
@@ -79,6 +106,34 @@ function askNewGrid() {
   });
 
 } */
-grid(newGrid);
+  grid(newGrid);
 }
+
+//features
+
+function randomColor() {
+  const r = Math.floor(Math.random() * 256);
+  const g = Math.floor(Math.random() * 256);
+  const b = Math.floor(Math.random() * 256);
+  return `rgb(${r}, ${g}, ${b})`;
+}
+
+function clearBackground() {
+  const clear = document.querySelector(".clear");
+
+  clear.addEventListener("click", () => {
+    const colsList = document.querySelectorAll(".cols");
+    for (let i = 0; i < colsList.length; i++) {
+      const cols = colsList[i];
+
+      const rows = cols.querySelectorAll(".row");
+      for (let j = 0; j < rows.length; j++) {
+        rows[j].style.backgroundColor = "";
+      }
+    }
+  });
+}
+
 grid();
+toggleSwitch();
+clearBackground();

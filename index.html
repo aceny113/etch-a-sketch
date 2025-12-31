@@ -13,13 +13,18 @@
     <div class="container">
 
         <h1>Etch a Sketch</h1>
+        <button class="new-grid" id="clickMe" onclick="askNewGrid();"> Change Grid Size </button>
 
         <div class="table">
         </div>
 
         <div class="options-container">
-            <input id="clickMe" type="button" value="Change Grid Size" onclick="askNewGrid();">
+
             <input type="color" name="color-choice" id="color-choice">
+            <button class="pen toggle">Toggle Pen</button>
+            <button class="rainbow-pen toggle">Toggle Rainbow Pen</button>
+            <button class="eraser toggle">Toggle Eraser</button>
+            <button class="clear">Clear</button>
         </div>
 
     </div>

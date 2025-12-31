@@ -6,15 +6,17 @@
 }
 
 .container {
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
 }
 
 .table {
-    width: 700px;
-    height: 700px;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-direction: row;
 
@@ -34,6 +36,39 @@
     background-color: white;
 }
 
-.change-bg {
-   
+#color-choice {
+    border: 1px solid navy;
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+
 }
+
+button {
+    border: 1px solid navy;
+    color: navy;
+    background: white;
+    padding: 10px 10px;
+    font-weight: bold;
+
+}
+
+.options-container {
+    width: 600px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+
+.options-container .active {
+    background-color: #B3E5FC;
+}
+
+.clear:active, .new-grid:active {
+    background-color: #B3E5FC;
+}
+
+/* .change-bg {
+   
+} */
