@@ -32,8 +32,6 @@ function changeBg() {
   const pen = document.querySelector(".pen");
   const rainbowPen = document.querySelector(".rainbow-pen");
   const eraser = document.querySelector(".eraser");
-  const clear = document.querySelector(".clear");
-
   for (let i = 0; i < rowsList.length; i++) {
     const rows = rowsList[i];
     rows.addEventListener("mouseenter", () => {
@@ -46,7 +44,7 @@ function changeBg() {
       } else if (rainbowPen.classList.contains("active")) {
         rows.style.backgroundColor = randomColor();
       } else if (eraser.classList.contains("active")) {
-        rows.style.backgroundColor = "white";
+        rows.style.backgroundColor = "";
       }
     });
   }
@@ -71,16 +69,19 @@ function toggleSwitch() {
       for (let j = 0; j < toggleButtons.length; j++) {
         toggleButtons[j].classList.remove("active");
       }
-
       toggleButtons[i].classList.add("active");
     });
   }
 }
 
-
-
 function askNewGrid() {
   const newGrid = Number(prompt("Enter new Grid. 1 - 100"));
+
+  if (newGrid < 1 || newGrid > 100 || isNaN(newGrid)) {
+    alert("Invalid input. Please enter a number from 1 to 100.");
+    return;
+  }
+
   const table = document.querySelector(".table");
 
   //remove rows and columns
@@ -137,3 +138,4 @@ function clearBackground() {
 grid();
 toggleSwitch();
 clearBackground();
+darkEffect();
