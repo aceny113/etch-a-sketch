@@ -7,7 +7,7 @@
 
 .container {
     width: 100vw;
-    height: 100vh;
+    height: 93vh;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,6 +19,7 @@
     height: 600px;
     display: flex;
     flex-direction: row;
+    margin: 10px 0;
 
 }
 
@@ -69,6 +70,15 @@ button {
     background-color: #B3E5FC;
 }
 
-/* .change-bg {
-   
-} */
+footer {
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    color: navy;
+    background-color: #B3E5FC;
+
+}
